@@ -10,13 +10,11 @@ export const isLoggedGuard: CanActivateFn = (route, state) => {
 
   const token$: Observable<string|null> = store.select(state => state.session.token)
 
-  token$.subscribe(console.log)
-
   return token$.pipe(
     map(t => !!t),
     tap(isConnected => { 
       if(!isConnected) 
-        router.navigate(['login']); 
+        router.navigate(['login']);
     })
   );
 };
