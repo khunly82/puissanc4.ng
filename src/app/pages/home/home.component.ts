@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { GameService } from '../../services/game.service';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-home',
@@ -10,15 +11,20 @@ import { GameService } from '../../services/game.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
-  message: string = '';
+  games: any[] = [];
   constructor(
-    private readonly _gameService: GameService
-  ){}
+    private readonly _gameService: GameService,
+    private readonly _store: Store<{session: any, game: any}>
+  ){ }
 
-    send() {
-      this._gameService.send(this.message);
-      this.message = '';
-    }
+  ngOnInit(): void {
+    this._store.select(state => state.game.games)
+      .subscribe(games => this.games = games);
+  }
+
+  createGame() {
+    this._gameService.createGame();
+  }
 }
