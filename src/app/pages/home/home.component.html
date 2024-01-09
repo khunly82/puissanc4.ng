@@ -1,6 +1,18 @@
 <button (click)="createGame()">Créer une partie</button>
 <ul>
     @for (game of games; track $index) {
-        <li>{{game.gameId}}</li>
+        <li>
+            @if(game.redPlayer) {
+                <span>{{game.redPlayer}}</span>
+            } @else {
+                <button (click)="join(game.gameId)">Rejoindre</button>
+            }
+            <span> VS </span>
+            @if(game.yellowPlayer) {
+                <span>{{game.yellowPlayer}}</span>
+            } @else {
+                <button (click)="join(game.gameId)">Rejoindre</button>
+            }
+        </li>
     }
 </ul>
