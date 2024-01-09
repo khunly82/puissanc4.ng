@@ -16,12 +16,12 @@ export class GameService {
         this.connection?.stop();
       } else {
         this.connection = new HubConnectionBuilder()
-          // .withUrl('https://puissance4.azurewebsites.net/ws/game', { 
-          //   accessTokenFactory: () => t
-          // })
-          .withUrl('http://localhost:5141/ws/game', { 
+          .withUrl('https://puissance4.azurewebsites.net/ws/game', { 
             accessTokenFactory: () => t
           })
+          // .withUrl('http://localhost:5141/ws/game', { 
+          //   accessTokenFactory: () => t
+          // })
           .withAutomaticReconnect()
           .build();
         this.connection.start();
