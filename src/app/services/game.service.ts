@@ -48,4 +48,8 @@ export class GameService {
   join(gameId: string) {
     this.connection.send('Join', gameId);
   }
+
+  play(obj: any) {
+    this.connection.send('Play', obj);
+  }
 }

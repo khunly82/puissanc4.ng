@@ -32,6 +32,6 @@ export class GameComponent implements OnInit {
   }
 
   play(i: number) {
-    
+    this._gameService.play({ gameId: this.currentGame.gameId, col: i })
   }
 }
