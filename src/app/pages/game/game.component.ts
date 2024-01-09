@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { GameService } from '../../services/game.service';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss'
 })
@@ -28,5 +29,9 @@ export class GameComponent implements OnInit {
         this._router.navigate(['/']);
       }
     })
+  }
+
+  play(i: number) {
+    
   }
 }

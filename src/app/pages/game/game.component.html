@@ -2,5 +2,13 @@
     <p>En attente d'un adversaire</p>
 } 
 @else {
-    <p>La partie commence</p>
+    <div class="grid">
+        <div *ngFor="let col of currentGame.grid; let i = index" class="col" 
+            (click)="play(i)">
+            <div *ngFor="let case of col" class="case">
+                <div *ngIf="case !== null" class="coin" 
+                    [ngClass]="{ yellow : case === 0, red: case === 1 }"></div>
+            </div>
+        </div>
+    </div>
 }
